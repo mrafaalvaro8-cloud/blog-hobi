@@ -290,21 +290,40 @@ h3 {
 .deck-card .deck-body {
   opacity: 1;
   transform: none;
-  transition: opacity 700ms var(--ease-expo), transform 700ms var(--ease-expo);
+  transform-origin: left center;
+  transition: opacity 620ms var(--ease-expo),
+    transform 620ms var(--ease-expo),
+    filter 620ms var(--ease-expo);
 }
 
+/* A sheet being laid down on the stack: arrives with a quiet rightward shift
+   and drop, then settles. Kept inside the layout box so the inspector never
+   sees the card pushed past the content edge. */
 .js .deck-card .deck-body {
   opacity: 0;
-  transform: translateY(40px) translateX(6%);
+  transform: translateX(5.5%) translateY(28px) scale(0.982);
+  filter: brightness(0.88);
 }
 
 .js .deck-card.is-in .deck-body {
   opacity: 1;
   transform: none;
+  filter: brightness(1);
 }
 
-.deck-card:nth-child(1) .deck-body {
-  transition-delay: 0ms;
+.deck-card .deck-body {
+  animation-duration: 620ms;
+  animation-fill-mode: both;
+  animation-timing-function: var(--ease-expo);
+}
+
+.js .deck-card .deck-body {
+  animation-name: card-slide-in;
+  transform-origin: left center;
+}
+
+.js .deck-card.is-in .deck-body {
+  animation-name: none;
 }
 
 .deck-card:nth-child(2) .deck-body {
@@ -346,6 +365,29 @@ h3 {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* the hand-writing clip: held back until the sheet it sits on is placed */
+.deck-video {
+  opacity: 0;
+  transition: opacity 900ms var(--ease-expo);
+}
+
+.js .deck-video.is-in {
+  opacity: 1;
+}
+
+@keyframes card-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(5.5%) translateY(28px) scale(0.982);
+    filter: brightness(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: brightness(1);
+  }
 }
 
 /* ---- entrances ---- */

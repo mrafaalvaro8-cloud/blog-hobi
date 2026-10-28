@@ -32,7 +32,7 @@ export default function Home() {
               loop
               playsInline
               title="Tangan sedang menulis huruf dengan tinta"
-              className="w-full max-w-md aspect-video object-cover bg-[var(--paper-3)] mb-8"
+              className="deck-video w-full max-w-md aspect-video object-cover bg-[var(--paper-3)] mb-8"
             />
             <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
               <Link href="#postingan" className="btn inline-block text-sm">
