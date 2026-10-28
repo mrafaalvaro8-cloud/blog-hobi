@@ -9,26 +9,20 @@ export default function Header() {
   useEffect(() => setMounted(true), [])
 
   return (
-    <header className="border-b border-[var(--border)]">
-      <div className="container !max-w-3xl flex items-center justify-between py-6 gap-4">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">✦</span>
-          <div>
-            <h1 className="text-lg m-0 leading-none">Pikiran yang Dicatet</h1>
-            <p className="text-xs text-[var(--muted)] m-0 hidden sm:block">
-              Catatan tentang hal-hal yang terlintas di pikiran
-            </p>
-          </div>
+    <header className="wrap">
+      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5">
+        <Link
+          href="/"
+          className="font-[family-name:var(--font-display)] text-[var(--step-lead)] leading-none text-[var(--desk-ink)] no-underline"
+        >
+          Pikiran yang Dicatet
         </Link>
-        <nav className="flex items-center gap-4 text-sm">
-          <Link href="/" className="text-[var(--muted)] hover:text-[var(--accent)]">
-            Beranda
-          </Link>
-          <Link href="/about" className="text-[var(--muted)] hover:text-[var(--accent)]">
-            Tentang
-          </Link>
-          <Link href="/categories" className="text-[var(--muted)] hover:text-[var(--accent)]">
+        <nav className="flex items-center gap-5 text-[var(--step-body)] text-[var(--desk-ink)]">
+          <Link href="/categories" className="link">
             Kategori
+          </Link>
+          <Link href="/about" className="link">
+            Tentang
           </Link>
           {mounted && <ThemeToggle />}
         </nav>

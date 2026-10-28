@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Merriweather } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -34,10 +35,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`${inter.variable} ${merriweather.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body>
-        <Header />
-        <main>{children}</main>
+        <div className="curtain-above">
+          <Header />
+          <main>{children}</main>
+        </div>
         <Footer />
+        <Script src="/motion.js" strategy="afterInteractive" />
       </body>
     </html>
   )

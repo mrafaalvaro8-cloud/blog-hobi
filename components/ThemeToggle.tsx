@@ -18,24 +18,19 @@ export default function ThemeToggle() {
   function toggle() {
     const next = !dark
     setDark(next)
-    if (next) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
+    document.documentElement.classList.toggle('dark', next)
+    localStorage.setItem('theme', next ? 'dark' : 'light')
   }
 
-  if (!mounted) return <div className="w-9 h-9" />
+  if (!mounted) return null
 
   return (
     <button
       onClick={toggle}
-      aria-label="Ganti tema"
-      className="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] transition"
+      aria-pressed={dark}
+      className="link text-[var(--desk-ink)]"
     >
-      {dark ? '☀' : '🌙'}
+      {dark ? 'Terang' : 'Gelap'}
     </button>
   )
 }

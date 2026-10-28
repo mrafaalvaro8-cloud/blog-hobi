@@ -20,27 +20,23 @@ export default function CategoryPage({
   const posts = getPostsByCategory(category)
 
   return (
-    <div className="container py-12 max-w-3xl">
-      <Link
-        href="/categories"
-        className="inline-block text-sm text-[var(--muted)] hover:text-[var(--accent)] mb-6"
-      >
-        ← Kembali ke kategori
-      </Link>
-      <h1 className="text-4xl mb-2">Kategori: {category}</h1>
-      <p className="text-[var(--muted)] mb-10">
-        {posts.length} postingan
-      </p>
+    <div className="wrap section">
+      <div className="sheet">
+        <Link
+          href="/categories"
+          className="link small muted mb-6 inline-block"
+        >
+          ← Semua kategori
+        </Link>
+        <h1 className="head mb-2">Kategori: {category}</h1>
+        <p className="small muted mb-8">{posts.length} catatan</p>
 
-      {posts.length === 0 ? (
-        <p className="text-[var(--muted)]">Belum ada postingan di kategori ini.</p>
-      ) : (
-        <div>
-          {posts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
-      )}
+        {posts.length === 0 ? (
+          <p className="muted">Belum ada catatan di kategori ini.</p>
+        ) : (
+          posts.map((post) => <PostCard key={post.slug} post={post} />)
+        )}
+      </div>
     </div>
   )
 }

@@ -12,24 +12,23 @@ function formatDate(dateStr: string) {
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <article className="mb-10 pb-10 border-b border-[var(--border)] last:border-b-0">
-      <span className="text-xs uppercase tracking-wide text-[var(--accent)]">
-        {post.category}
-      </span>
-      <Link href={`/posts/${post.slug}`}>
-        <h2 className="text-2xl mt-1 mb-2 hover:text-[var(--accent)] transition">
+    <article className="mb-12">
+      <p className="small muted mb-3">
+        {formatDate(post.date)}
+      </p>
+      <Link href={`/posts/${post.slug}`} className="link">
+        <h2 className="post-title mb-2">
           {post.title}
         </h2>
       </Link>
-      <p className="text-sm text-[var(--muted)] mb-3">
-        {formatDate(post.date)}
+      <p className="text-[var(--step-body)] leading-relaxed mb-4">
+        {post.excerpt}
       </p>
-      <p className="text-[var(--text)] leading-relaxed">{post.excerpt}</p>
       <Link
         href={`/posts/${post.slug}`}
-        className="inline-block mt-3 text-sm font-medium hover:underline"
+        className="link text-sm"
       >
-        Baca lebih lanjut →
+        Baca{' →'}
       </Link>
     </article>
   )

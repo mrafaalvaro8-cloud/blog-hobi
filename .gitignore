@@ -5,3 +5,5 @@ out
 .vercel
 .DS_Store
 *.tsbuildinfo
+
+.taste-skill/

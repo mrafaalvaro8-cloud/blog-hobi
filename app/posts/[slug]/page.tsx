@@ -39,35 +39,33 @@ export default function PostPage({
   if (!post) notFound()
 
   return (
-    <article className="container py-12 max-w-3xl">
-      <Link
-        href="/"
-        className="inline-block text-sm text-[var(--muted)] hover:text-[var(--accent)] mb-8"
-      >
-        ← Kembali ke beranda
+    <article className="wrap section">
+      <Link href="/" className="link small muted mb-8 inline-block">
+        ← Semua catatan
       </Link>
 
-      <span className="text-xs uppercase tracking-wide text-[var(--accent)]">
-        {post.category}
-      </span>
-      <h1 className="text-4xl md:text-5xl mt-3 mb-4">
-        {post.title}
-      </h1>
-      <p className="text-[var(--muted)] mb-10">
-        {formatDate(post.date)}
-      </p>
+      <div className="sheet">
+        <p className="small muted mb-3">{formatDate(post.date)}</p>
+        <h1 className="display mb-4">{post.title}</h1>
+        <p className="small muted mb-8">Ditulis oleh seseorang yang sedang berpikir.</p>
 
-      <div className="post-content">
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        <div className="post-content">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
+
+        <div className="mt-10">
+          <Link href="/" className="link small">
+            ← Kembali ke halaman utama
+          </Link>
+        </div>
       </div>
 
-      <div className="mt-12 pt-8 border-t border-[var(--border)]">
-        <Link
-          href="/"
-          className="inline-block text-sm font-medium border border-[var(--border)] px-4 py-2 rounded-full hover:bg-[var(--border)] transition"
-        >
-          ← Semua postingan
-        </Link>
+      <div className="post-band mt-12">
+        <img
+          src="/assets/reading-a-book-indoors-during-a-quiet.jpg"
+          alt="Membaca buku dalam sore yang tenang"
+          className="w-full h-[44vh] object-cover"
+        />
       </div>
     </article>
   )
